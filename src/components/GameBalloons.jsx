@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Balloon } from "./Balloon";
 import { Balloons } from "./Balloons";
 
-function createBalloons(num) {
+/* function createBalloons(num) {
   const max = num - 1;
   const min = 0;
   const rand = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -15,7 +15,8 @@ function createBalloons(num) {
       balloonsArray.push("green");
     }
   }
-  /* function generateBalloons(num) {
+} */
+/* function generateBalloons(num) {
   const max = num - 1;
   const min = 0;
   const rand = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -41,17 +42,23 @@ function createBalloons(num) {
         ></div>
       );
     }
-  } */
+  } 
   return balloonsArray;
-}
+}*/
+const balloonQuantity = {
+  Easy: 3,
+  Medium: 5,
+  Difficult: 7,
+};
 
-function GameBalloons() {
+function GameBalloons({ level }) {
+  const quantity = balloonQuantity[level];
   const delay = useRef(2000);
   const [round, setRound] = useState(0);
   useEffect(() => {
     setTimeout(() => {
       if (delay.current > 100) {
-        delay.current = delay.current - 100;
+        delay.current = delay.current - 50;
       }
       setRound(round + 1);
     }, delay.current);
@@ -60,7 +67,7 @@ function GameBalloons() {
   return (
     <>
       {" "}
-      <Balloons key={round} /> delay: {delay.current}{" "}
+      <Balloons key={round} quantity={quantity} /> delay: {delay.current}{" "}
     </>
   );
 }

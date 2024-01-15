@@ -84,12 +84,39 @@ header h3 {
   overflow: hidden;
   transition: opacity 500ms;
 } 
-
+.settings {
+  position: absolute;
+  top: 100px;
+  left: 25%;
+  width: 30%;
+  height: 30%;
+  padding: 5%;
+  background-color: #7b77d8;
+}
+.settings h2 {
+  text-align: center;
+  font-family: "PressStart2P";
+}
+.settings label {
+  display: block;
+  margin: 20px 0;
+}
+.settings b {
+  margin-right: 30px;
+}
+.settings span {
+  margin-right: 10px;
+}
+.settings button {
+  padding: 5px 10px;
+  font-family: "PressStart2P";
+}
 .balloon {
   height: 125px;
   width: 105px;
   border-radius: 75% 75% 70% 70%;
   position: relative;
+  z-index: 2;
 }
 .balloon-color {
   color: rgb(173, 255, 47);

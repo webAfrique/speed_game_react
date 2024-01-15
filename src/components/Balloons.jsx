@@ -1,18 +1,18 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 import { Balloon } from "./Balloon";
 
-const BALLOON_AMOUNT = 3;
+//const BALLOON_AMOUNT = 5;
 
 function getRandomIndex(num) {
   return Math.round(Math.random() * (num - 1));
 }
 
-export function Balloons() {
-  const redIndex = useRef(getRandomIndex(BALLOON_AMOUNT)).current;
+export function Balloons({ quantity }) {
+  const redIndex = useRef(getRandomIndex(quantity)).current;
   return (
     <div className="balloon-container">
-      {Array(BALLOON_AMOUNT)
+      {Array(quantity)
         .fill(null)
         .map((_, index) => {
           return (

@@ -1,20 +1,43 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 
 //import GameEnvironment from "./components/GameEnvironment";
 import Header from "./components/Header";
 import Clouds from "./components/Clouds";
+import GameSettings from "./components/GameSettings";
+import FloatingBalloons from "./components/FloatingBalloons";
 import GameBalloons from "./components/GameBalloons";
-//import FloatingBalloons from "./components/FloatingBalloons";
 
 function App() {
-  //const [count, setCount] = useState(0);
+  const [player, setPlayer] = useState("");
+  const [level, setLevel] = useState("");
+  const [playing, setPlaying] = useState(false);
+
+  function playerHandler(event) {
+    const playerName = event.target.value;
+    setPlayer(playerName);
+  }
+  function levelHandler(event) {
+    const level = event.target.value;
+    setLevel(level);
+  }
+  function gameStateHandler() {
+    setPlaying(!playing);
+  }
 
   return (
     <div className="game-environment">
-      <Header />
+      <Header player={player} level={level} />
       <Clouds />
-      <GameBalloons />
+      {playing && <GameBalloons level={level} />}
+      {!playing && (
+        <GameSettings
+          playerHandler={playerHandler}
+          levelHandler={levelHandler}
+          gameStateHandler={gameStateHandler}
+        />
+      )}
+      {!playing && <FloatingBalloons />}
     </div>
   );
 }
