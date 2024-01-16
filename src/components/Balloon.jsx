@@ -19,7 +19,7 @@ function generateBalloonStyles(balloonColor) {
   };
 }
 
-export function Balloon({ color }) {
+export function Balloon({ color, popHandler }) {
   const [hidden, setHidden] = useState(false);
   return (
     <div
@@ -30,6 +30,7 @@ export function Balloon({ color }) {
       }}
       onClick={() => {
         setHidden(true);
+        popHandler(color);
       }}
     ></div>
   );

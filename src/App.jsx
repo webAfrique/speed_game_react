@@ -12,6 +12,7 @@ function App() {
   const [player, setPlayer] = useState("");
   const [level, setLevel] = useState("");
   const [playing, setPlaying] = useState(false);
+  const [score, setScore] = useState(0);
 
   function playerHandler(event) {
     const playerName = event.target.value;
@@ -24,12 +25,19 @@ function App() {
   function gameStateHandler() {
     setPlaying(!playing);
   }
+  function popHandler(balloonColor) {
+    if (balloonColor === "red") {
+      setScore(score + 1);
+    } else {
+      setScore(score - 1);
+    }
+  }
 
   return (
     <div className="game-environment">
-      <Header player={player} level={level} />
+      <Header player={player} level={level} score={score} />
       <Clouds />
-      {playing && <GameBalloons level={level} />}
+      {playing && <GameBalloons level={level} popHandler={popHandler} />}
       {!playing && (
         <GameSettings
           playerHandler={playerHandler}

@@ -51,7 +51,7 @@ const balloonQuantity = {
   Difficult: 7,
 };
 
-function GameBalloons({ level }) {
+function GameBalloons({ level, popHandler }) {
   const quantity = balloonQuantity[level];
   const delay = useRef(2000);
   const [round, setRound] = useState(0);
@@ -67,7 +67,8 @@ function GameBalloons({ level }) {
   return (
     <>
       {" "}
-      <Balloons key={round} quantity={quantity} /> delay: {delay.current}{" "}
+      <Balloons key={round} quantity={quantity} popHandler={popHandler} />{" "}
+      delay: {delay.current}{" "}
     </>
   );
 }

@@ -8,7 +8,7 @@ function getRandomIndex(num) {
   return Math.round(Math.random() * (num - 1));
 }
 
-export function Balloons({ quantity }) {
+export function Balloons({ quantity, popHandler }) {
   const redIndex = useRef(getRandomIndex(quantity)).current;
   return (
     <div className="balloon-container">
@@ -16,7 +16,11 @@ export function Balloons({ quantity }) {
         .fill(null)
         .map((_, index) => {
           return (
-            <Balloon key={index} color={index == redIndex ? "red" : "green"} />
+            <Balloon
+              key={index}
+              color={index == redIndex ? "red" : "green"}
+              popHandler={popHandler}
+            />
           );
         })}
     </div>
