@@ -25,16 +25,16 @@ const sad = new Audio(sadSound);
 function App() {
   const [player, setPlayer] = useState("");
   const [level, setLevel] = useState("Easy");
-  const [playing, setPlaying] = useState(false);
+  const [gameState, setGameState] = useState("init");
   const [score, setScore] = useState(0);
   const [round, setRound] = useState(1);
-  const [endOfRound, setEndOfRound] = useState(false);
-  const [gameOver, setGameOver] = useState(false);
+  //const [endOfRound, setEndOfRound] = useState(false);
+  //const [gameOver, setGameOver] = useState(false);
 
   function startGame() {
     gameTrack.play();
-    setPlaying(true);
-    setEndOfRound(false);
+    setGameState("playing");
+    //setEndOfRound(false);
   }
   function popHandler(balloonColor) {
     // if the right balloon is popped
@@ -43,15 +43,13 @@ function App() {
       pop.play();
     } else if (round == 3) {
       // if wrong balloon and last round
-      setPlaying(false);
-      setGameOver(true);
+      setGameState("gameOver");
       gameTrack.pause();
       score >= 10 ? applause.play() : sad.play();
     } else {
       // wrong balloon but not last round
       setScore(score == 0 ? 0 : score - 1);
-      setEndOfRound(true);
-      setPlaying(false);
+      setGameState("endOfRound");
       setRound(round + 1);
       gameTrack.pause();
       ooh.play();
@@ -62,17 +60,24 @@ function App() {
     <div className="game-environment">
       <Header player={player} level={level} score={score} />
       <Clouds />
-      {playing && <GameBalloons level={level} popHandler={popHandler} />}
-      {!playing && (
+      {gameState === "init" && <FloatingBalloons />}
+      {gameState === "init" && (
         <GameSettings
+          player={player}
           setPlayer={setPlayer}
           setLevel={setLevel}
           startGame={startGame}
         />
       )}
-      {!playing && <FloatingBalloons />}
-      {endOfRound && <ScoreCard score={score} startGame={startGame} />}
-      {gameOver && <GameOver score={score} />}
+      {gameState === "playing" && (
+        <GameBalloons level={level} popHandler={popHandler} />
+      )}
+      {gameState === "endOfRound" && (
+        <ScoreCard score={score} startGame={startGame} />
+      )}
+      {gameState === "gameOver" && (
+        <GameOver score={score} player={player} setGameState={setGameState} />
+      )}
     </div>
   );
 }

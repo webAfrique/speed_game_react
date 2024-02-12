@@ -1,7 +1,6 @@
 function GameSettings({ setPlayer, setLevel, startGame }) {
   return (
     <div className="settings">
-      <h2>Settings</h2>
       <label htmlFor="player">
         <b>Player</b>
         <input
@@ -10,7 +9,7 @@ function GameSettings({ setPlayer, setLevel, startGame }) {
           placeholder="Enter your name"
         />
       </label>
-      <label htmlFor="dificulty">
+      <label htmlFor="level">
         <b>Level</b>
         <input
           type="button"
@@ -24,11 +23,13 @@ function GameSettings({ setPlayer, setLevel, startGame }) {
         />
         <input
           type="button"
-          value="Dificult"
+          value="Difficult"
           onClick={(e) => setLevel(e.target.value)}
         />
       </label>
-      <button onClick={startGame}>Play</button>
+      <button className="play-btn" onClick={startGame}>
+        Play
+      </button>
     </div>
   );
 }

@@ -18,7 +18,7 @@ function FloatingBalloonStyles() {
   };
 }
 
-const balloons = Array(30).fill(0);
+const balloons = Array(10).fill(0);
 
 function FloatingBalloons() {
   return (

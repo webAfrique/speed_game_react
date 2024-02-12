@@ -1,11 +1,11 @@
-function Header({ player, level, score }) {
+function Header({ level, score }) {
   return (
     <header>
-      <h1>Balloon Popper Speed Game</h1>
-      <h3 className="start-stop-btn">Start Game</h3>
-      <h1>{player}</h1>
-      <h1>{level}</h1>
-      <h1>Score: {score}</h1>
+      <div className="game-info">
+        <h4>Score: {score}</h4>
+        <h1>Balloon Popper Game</h1>
+        <h4>Level: {level}</h4>
+      </div>
     </header>
   );
 }
