@@ -31,14 +31,6 @@ function App() {
   const [endOfRound, setEndOfRound] = useState(false);
   const [gameOver, setGameOver] = useState(false);
 
-  function playerHandler(event) {
-    const playerName = event.target.value;
-    setPlayer(playerName);
-  }
-  function levelHandler(event) {
-    const level = event.target.value;
-    setLevel(level);
-  }
   function startGame() {
     gameTrack.play();
     setPlaying(true);
@@ -73,8 +65,8 @@ function App() {
       {playing && <GameBalloons level={level} popHandler={popHandler} />}
       {!playing && (
         <GameSettings
-          playerHandler={playerHandler}
-          levelHandler={levelHandler}
+          setPlayer={setPlayer}
+          setLevel={setLevel}
           startGame={startGame}
         />
       )}
