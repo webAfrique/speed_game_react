@@ -84,7 +84,8 @@ header h3 {
   overflow: hidden;
   transition: opacity 500ms;
 } 
-.settings {
+/* settings div */
+.settings, .score-card {
   position: absolute;
   top: 100px;
   left: 25%;
@@ -111,6 +112,18 @@ header h3 {
   padding: 5px 10px;
   font-family: "PressStart2P";
 }
+/*score card*/
+.score-card span.skull {
+  text-align: center;
+  font-size: 4rem;
+  color: red;
+}
+.score-card h2 {
+  text-align: center;
+  font-family: "PressStart2P";
+  color: red;
+}
+/* balloon */
 .balloon {
   height: 125px;
   width: 105px;

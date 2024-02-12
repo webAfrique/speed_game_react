@@ -1,4 +1,4 @@
-function GameSettings({ playerHandler, levelHandler, gameStateHandler }) {
+function GameSettings({ playerHandler, levelHandler, startGame }) {
   return (
     <div className="settings">
       <h2>Settings</h2>
@@ -16,7 +16,7 @@ function GameSettings({ playerHandler, levelHandler, gameStateHandler }) {
         <input type="button" value="Medium" onClick={levelHandler} />
         <input type="button" value="Dificult" onClick={levelHandler} />
       </label>
-      <button onClick={gameStateHandler}>Play</button>
+      <button onClick={startGame}>Play</button>
     </div>
   );
 }
